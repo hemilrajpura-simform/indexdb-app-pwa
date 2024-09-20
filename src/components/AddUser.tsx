@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { addUser, getRecords } from "../db";
 import { User } from "../staticData";
 
-const AddUserForm = () => {
+const AddUserForm = ({ updateUserItems }: { updateUserItems: () => void }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState<number | "">("");
 
@@ -23,7 +23,7 @@ const AddUserForm = () => {
       } catch (error) {
         console.error("Error adding user: ", error);
       }
-
+      updateUserItems();
       setName("");
       setAge("");
     }

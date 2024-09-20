@@ -7,10 +7,14 @@ import AddUserForm from "./components/AddUser";
 function App() {
   const [records, setRecords] = useState<User[]>([]);
 
+  const updateUserItems = async () => {
+    const allRecords = await getRecords();
+    setRecords(allRecords);
+  };
+
   useEffect(() => {
     const initializeDB = async () => {
-      const allRecords = await getRecords();
-      setRecords(allRecords);
+      updateUserItems();
     };
 
     initializeDB();
@@ -28,7 +32,7 @@ function App() {
       </ul>
 
       <>
-        <AddUserForm />
+        <AddUserForm updateUserItems={updateUserItems} />
       </>
     </div>
   );
