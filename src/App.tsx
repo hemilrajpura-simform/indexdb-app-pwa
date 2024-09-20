@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { getRecords } from "./db";
 import { User } from "./staticData";
+import AddUserForm from "./components/AddUser";
 
 function App() {
   const [records, setRecords] = useState<User[]>([]);
@@ -25,6 +26,10 @@ function App() {
           </li>
         ))}
       </ul>
+
+      <>
+        <AddUserForm />
+      </>
     </div>
   );
 }

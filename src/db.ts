@@ -69,3 +69,25 @@ export const getRecords = async (): Promise<User[]> => {
     };
   });
 };
+
+export const addUser = async (user: User): Promise<void> => {
+  const db = await openDatabase();
+
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction("myStore", "readwrite");
+    const store = transaction.objectStore("myStore");
+
+    const request = store.add(user);
+
+    request.onsuccess = () => {
+      console.log("User added successfully");
+      resolve();
+    };
+
+    request.onerror = (event: Event) => {
+      reject(
+        "Error adding user: " + (event.target as IDBRequest).error?.message
+      );
+    };
+  });
+};
