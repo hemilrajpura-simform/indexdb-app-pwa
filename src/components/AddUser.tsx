@@ -30,20 +30,24 @@ const AddUserForm = ({ updateUserItems }: { updateUserItems: () => void }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form">
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
+        placeholder="Enter Name"
+        className="input"
       />
       <input
         type="number"
         value={age}
         onChange={(e) => setAge(Number(e.target.value))}
-        placeholder="Age"
+        placeholder="Enter Age"
+        className="input"
       />
-      <button type="submit">Add User</button>
+      <button type="submit" className="button">
+        Add User
+      </button>
     </form>
   );
 };

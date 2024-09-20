@@ -21,8 +21,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Static Users in IndexedDB</h1>
+    <div className="container">
+      <h1>Users in IndexedDB</h1>
       <ul>
         {records.map((record) => (
           <li key={record.id}>
